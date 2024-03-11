@@ -1,7 +1,6 @@
-// components/TaskForm.tsx
 
 import React, { useState } from 'react';
-import { Todo } from '@/utils/types'; // Assuming you've defined the Todo interface
+import { Todo } from '@/utils/types';
 
 interface TaskFormProps {
     onAddTask:  any;
@@ -18,26 +17,26 @@ const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {
         e.preventDefault();
         if (taskText.trim()) {
             const newTask: Todo = {
-                id: Date.now().toString(), // Generate a unique ID (you can use any method)
+                id: Date.now().toString(), 
                 item: taskText,
                 completed: false,
             };
-            onAddTask(newTask); // Pass the new task to the parent component
-            setTaskText(''); // Clear the input field
+            onAddTask(newTask); 
+            setTaskText('');
         }
     };
 
     return (
         <form onSubmit={handleSubmit}>
-            <div className='flex items-center gap-5'>
+            <div className='flex items-center gap-5 w-full'>
                 <input
                     type="text"
-                    className='border border-slate-200 px-3 py-2 rounded-md'
+                    className='border border-slate-400 focus:border-purple-500 px-3 py-2 rounded-md w-3/4'
                     placeholder="Enter a task..."
                     value={taskText}
                     onChange={handleInputChange}
                 />
-                <button type="submit" className='px-4 py-2 bg-gray-300 rounded-md'>Add Task</button>
+                <button type="submit" className='p-2 bg-blue-500 text-white rounded-md w-1/4'>Add Task</button>
             </div>
         </form>
     );

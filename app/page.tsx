@@ -10,11 +10,31 @@ export default function Home() {
   const handleAddTask = (task: string) => {
     setTasks([...tasks, task]);
   };
+
+  const handleTaskComplete = (index: number) => {
+    const updatedTasks = tasks.filter((_, i) => i !== index);
+    setTasks(updatedTasks);
+  };
+
+  const handleTaskDelete = (index: number) => {
+    const deleteTasks = tasks.filter((_, i) => i !== index);
+    setTasks(deleteTasks);
+  };
+  
+  const clearAllTask = () => {
+    setTasks([]);
+  };
+
   return (
-    <div className="w-1/4 mx-auto my-20">
+    <div className="w-full md:w-3/4 lg:w-1/3 mx-auto my-20 bg-gray-100 shadow-mg lg:p-14 p-4 rounded">
+      <div className="flex items-center justify-between pb-8">
+          <div className="text-xl text-center">Todo List</div>
+          <button className="bg-red-500 text-white px-3 py-2 rounded-md" onClick={clearAllTask}>Clear</button>
+      </div>
+      
       <TaskForm onAddTask={handleAddTask}/>
       <div className="mt-4 py-3">
-          <TaskList tasks={tasks} />
+          <TaskList tasks={tasks} onTaskComplete={handleTaskComplete} onTaskDelete={handleTaskDelete}/>
       </div>
     </div>
   );
