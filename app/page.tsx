@@ -2,6 +2,7 @@
 import TaskForm from "@/components/TaskForm/page";
 import TaskList from "@/components/TaskList/page";
 import { useState } from "react";
+import { FcTodoList } from "react-icons/fc";
 
 export default function Home() {
 
@@ -34,10 +35,12 @@ export default function Home() {
   
   const clearAllTask = () => {
     setTasks([]);
+    localStorage.clear();
   };
 
   return (
-    <div className="w-full md:w-3/4 lg:w-1/3 mx-auto my-20 bg-gray-100 shadow-mg lg:p-14 p-4 rounded">
+    <div className="w-4/5 md:w-[700px] mx-auto my-20 bg-gray-100 shadow-mg md:p-14 px-6 py-10 rounded">
+      <div className="flex items-center gap-2 justify-center mb-14 text-lg"><FcTodoList className="text-xl"/> Welcome to Your Awesome To-Do List!</div>
       <div className="flex items-center justify-between pb-8">
           <div className="text-xl text-center">Todo List</div>
           <button className="bg-red-500 text-white px-2 py-1 rounded-md" onClick={clearAllTask}>Clear</button>
