@@ -31,7 +31,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ onAddTask }) => {
             <div className='flex items-center gap-5 w-full'>
                 <input
                     type="text"
-                    className='border border-slate-400 focus:border-purple-500 px-3 py-2 rounded-md w-3/4'
+                    className='border border-slate-400 focus:border-transparent focus:ring-0 px-3 py-2 rounded-md w-3/4'
                     placeholder="Enter a task..."
                     value={taskText}
                     onChange={handleInputChange}
