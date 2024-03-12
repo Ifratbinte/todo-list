@@ -10,7 +10,7 @@ interface TaskListProps {
 }
 
 const TaskList: React.FC<TaskListProps> = ({ tasks, onTaskComplete, onTaskDelete }) => {
-    const [completedTasks, setCompletedTasks] = useState<boolean[]>(new Array(tasks.length).fill(false));
+    const [completedTasks, setCompletedTasks] = useState<boolean[]>(new Array(tasks?.length).fill(false));
 
     const handleTaskComplete = (index: number) => {
         const updatedCompletedTasks = [...completedTasks];
@@ -22,7 +22,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, onTaskComplete, onTaskDelete
     return (
         <>
             <ul className='py-3'>
-                {tasks.map((task, index) => (
+                {tasks?.map((task, index) => (
                     <li key={task.id} className='flex items-center justify-between py-3 px-5 my-3 rounded-md bg-white border border-purple-200'>
                         <div className='flex items-center gap-3'>
                             <input

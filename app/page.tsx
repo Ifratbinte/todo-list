@@ -7,8 +7,12 @@ import { FcTodoList } from "react-icons/fc";
 export default function Home() {
 
   const [tasks, setTasks] = useState<any[]>( () => {
-    const savedTasks = localStorage.getItem('TASKS');
-    return savedTasks ? JSON.parse(savedTasks) : [];
+    const ISSERVER = typeof window === "undefined";
+    if (!ISSERVER) {
+      const savedTasks = localStorage.getItem('TASKS');
+      return savedTasks ? JSON.parse(savedTasks) : [];
+    }
+    
   });
 
   const handleAddTask = (task: string) => {
